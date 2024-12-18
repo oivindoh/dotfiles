@@ -1,0 +1,26 @@
+packages:
+  darwin:
+    brews:
+    - git
+    - argocd
+    - jq
+    - chezmoi
+    - helm
+    - kubecm
+    - kubectx
+    - kubernetes-cli
+    - ncdu
+    - nmap
+    - ollama
+    - sqlmap
+    - sqlite
+    - suricata
+
+    casks:
+    - firefox
+    - gpg-suite
+    - little-snitch
+    - warp
+    - mattermost
+    - iterm2
+    - visual-studio-code
