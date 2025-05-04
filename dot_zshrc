@@ -1,0 +1,9 @@
+export CLICOLOR=1
+autoload -Uz compinit
+compinit
+
+wallpaper () { automator -i "${1}" ~/Documents/SetBackground.workflow }
+source <(kubectl completion zsh)
+alias k=kubectl
+
+alias ls=eza

@@ -1,23 +1,40 @@
 packages:
   darwin:
     brews:
-    - git
-    - argocd
-    - jq
-    - chezmoi
-    - helm
-    - kubecm
-    - kubectx
-    - kubernetes-cli
-    - ncdu
-    - nmap
-    - ollama
+    - git # yes
+    - argocd # need the cli
+    - jq # pipe it all
+    - chezmoi # this
+    - helm # packages
+    - kubecm # config manager
+    - kubectx # context switch
+    - kubernetes-cli # duh
+    - ncdu # disk usage ui
+    - nmap # spy
+    - ollama # local models
     - sqlmap
-    - sqlite
-    - suricata
+    - sqlite # local storage
+    - suricata # spy
+    - fzf # great fuzzy search
+    - duf # better disk usage report
+    - tealdeer # man page steroids
+    - bat # super cat
+    - eza # better ls
+    # mosh ? ssh replace
+    # glances ? top replace
+    # btop ? top replace
+    # dust ? du replace
+    # atuin ? shell history in sqlite with more context
+    - yq
+    - jq
+    # dog ? dig replacement
+    # himalaya - cli email?
+    # procs ? ps replacement
+
 
     casks:
-    - firefox
+    - itermai
+    - brave-browser
     - gpg-suite
     - little-snitch
     - warp
