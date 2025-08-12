@@ -27,6 +27,7 @@ packages:
       # atuin ? shell history in sqlite with more context
       - yq
       - jq
+      - nvim
       # dog ? dig replacement
       # himalaya - cli email?
       # procs ? ps replacement
@@ -41,6 +42,6 @@ packages:
       - iterm2
       - visual-studio-code
       - aerospace
-      
+
     taps:
       - nikitabobko/tap
