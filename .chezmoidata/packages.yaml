@@ -30,6 +30,7 @@ packages:
     # dog ? dig replacement
     # himalaya - cli email?
     # procs ? ps replacement
+    - nikitabobko/tap/aerospace
 
 
     casks:
