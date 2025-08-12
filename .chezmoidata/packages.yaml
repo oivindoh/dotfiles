@@ -4,6 +4,7 @@ packages:
       - git # yes
       - argocd # need the cli
       - jq # pipe it all
+      - gh
       - chezmoi # this
       - helm # packages
       - kubecm # config manager
@@ -42,6 +43,10 @@ packages:
       - iterm2
       - visual-studio-code
       - aerospace
+      - sketchybar
+      - font-hack-nerd-font
+      - sf-symbols
 
     taps:
       - nikitabobko/tap
+      - FelixKratz/formulae

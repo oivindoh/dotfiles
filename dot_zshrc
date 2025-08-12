@@ -6,5 +6,5 @@ compinit
 wallpaper () { automator -i "${1}" ~/Documents/SetBackground.workflow }
 source <(kubectl completion zsh)
 alias k=kubectl
-
+alias vim=nvim
 alias ls=eza
