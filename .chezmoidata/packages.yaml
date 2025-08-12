@@ -32,19 +32,20 @@ packages:
       # dog ? dig replacement
       # himalaya - cli email?
       # procs ? ps replacement
+      - sketchybar
+      - bitwarden
 
     casks:
       - itermai
       - brave-browser
       - gpg-suite
       - little-snitch
-      - warp
       - mattermost
       - iterm2
       - visual-studio-code
       - aerospace
-      - sketchybar
       - font-hack-nerd-font
+      - font-sketchybar-app-font
       - sf-symbols
 
     taps:
