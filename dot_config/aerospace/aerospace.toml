@@ -199,6 +199,43 @@ automatically-unhide-macos-hidden-apps = true
 #7 = ['secondary', 'main']
 #8 = ['secondary', 'main']
 
+[[on-window-detected]]
+    if.app-id = 'Mattermost.Desktop'
+    run = ['move-node-to-workspace 4']
+[[on-window-detected]]
+    if.app-id = 'com.tinyspeck.slackmacgap'
+    run = ['move-node-to-workspace 4']
+[[on-window-detected]]
+    if.app-id = 'com.bitwarden.desktop'
+    run = ['move-node-to-workspace 1']
+[[on-window-detected]]
+    if.app-id = 'com.wireguard.macos'
+    run = ['move-node-to-workspace 1']
+[[on-window-detected]]
+    if.app-id = 'tracesOf.Uebersicht'
+    run = ['move-node-to-workspace 1']
+[[on-window-detected]]
+    if.app-id = 'com.apple.mail'
+    run = ['move-node-to-workspace 5']
+[[on-window-detected]]
+    if.app-id = 'com.apple.iCal'
+    run = ['move-node-to-workspace 5']
+[[on-window-detected]]
+    if.app-id = 'com.apple.Notes'
+    run = ['move-node-to-workspace 5']
+[[on-window-detected]]
+    if.app-id = 'com.googlecode.iterm2'
+    if.during-aerospace-startup = true
+    run = ['move-node-to-workspace 2']
+[[on-window-detected]]
+    if.app-id = 'com.brave.Browser'
+    if.during-aerospace-startup = true
+    run = ['move-node-to-workspace 3']
+[[on-window-detected]]
+    if.app-id = 'com.microsoft.VSCode'
+    if.during-aerospace-startup = true
+    run = ['move-node-to-workspace 2']
+
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.service.binding]
