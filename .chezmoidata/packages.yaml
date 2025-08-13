@@ -34,6 +34,7 @@ packages:
       # procs ? ps replacement
       - sketchybar
       - borders
+      - wireguard-tools
 
     casks:
       - itermai
@@ -48,6 +49,7 @@ packages:
       - font-sketchybar-app-font
       - sf-symbols
       - ubersicht
+      - slack
     taps:
       - nikitabobko/tap
       - FelixKratz/formulae

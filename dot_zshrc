@@ -2,6 +2,8 @@ path+=$HOME/.local/bin
 export PATH
 export CLICOLOR=1
 export EDITOR=nvim
+#export SSH_AUTH_SOCK=$HOME/.bitwarden-ssh-agent.sock
+export SSH_AUTH_SOCK=$HOME/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock
 autoload -Uz compinit
 compinit
 
