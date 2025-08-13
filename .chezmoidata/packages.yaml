@@ -52,6 +52,7 @@ packages:
       - ubersicht
       - slack
       - xquartz
+      - zoom
     taps:
       - nikitabobko/tap
       - FelixKratz/formulae
