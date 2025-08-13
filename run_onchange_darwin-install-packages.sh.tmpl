@@ -12,4 +12,13 @@ brew {{ . | quote }}
 cask {{ . | quote }}
 {{ end -}}
 EOF
+
+# bundle above must install mas
+{{ range .packages.darwin.mas -}}
+mas lucky {{ . | quote }}
 {{ end -}}
+
+# upgrade all apps
+#mas upgrade
+
+{{ end }}
