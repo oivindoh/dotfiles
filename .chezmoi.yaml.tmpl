@@ -1,7 +1,10 @@
-{{- $email := promptStringOnce . "email" "Email address" -}}
+{{- $workemail := promptStringOnce . "workemail" "Work Email address" -}}
+{{- $homeemail := promptStringOnce . "homeemail" "Home Email address" -}}
 {{- $fullname := promptStringOnce . "fullname" "Full name" -}}
 
-
 data:
-  email: {{ $email | quote }}
+  workemail: {{ $workemail | quote }}
+  worksigningkey: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP85EpeWD3ZQyeCG6gYJTwK1dC3ZhWgv739bHO21PpAz"
+  homesigningkey: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP85EpeWD3ZQyeCG6gYJTwK1dC3ZhWgv739bHO21PpAz"
+  homeemail: {{ $homeemail | quote }}
   fullname: {{ $fullname | quote }}

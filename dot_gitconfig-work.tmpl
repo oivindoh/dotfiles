@@ -1,0 +1,8 @@
+[user]
+  name = {{ .fullname | quote }}
+  email = {{ .workemail | quote }}
+  signingkey = {{ .worksigningkey | quote }}
+[init]
+  defaultBranch = "master"
+[credential]
+  helper = osxkeychain

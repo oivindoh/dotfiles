@@ -1,6 +1,10 @@
-# This is Git's per-user configuration file.
-[user]
-  name = {{ .fullname | quote }}
-  email = {{ .email | quote }}
-[init]
-  defaultBranch = "master"
+[commit]
+  gpgsign = true
+[gpg]
+  format = ssh
+[includeIf "gitdir:~/src/work/"]
+        path = ~/.gitconfig-work
+[includeIf "gitdir:~/src/home/"]
+        path = ~/.gitconfig-home
+[includeIf "gitdir:~/.local/share/chezmoi/"]
+        path = ~/.gitconfig-home
