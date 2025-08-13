@@ -33,6 +33,7 @@ packages:
       # himalaya - cli email?
       # procs ? ps replacement
       - sketchybar
+      - borders
 
     casks:
       - itermai
@@ -46,7 +47,9 @@ packages:
       - font-hack-nerd-font
       - font-sketchybar-app-font
       - sf-symbols
-      - bitwarden
+      - ubersicht
     taps:
       - nikitabobko/tap
       - FelixKratz/formulae
+    mas:
+      - bitwarden
