@@ -35,6 +35,7 @@ packages:
       - sketchybar
       - borders
       - wireguard-tools
+      - k9s
 
     casks:
       - itermai
@@ -50,6 +51,7 @@ packages:
       - sf-symbols
       - ubersicht
       - slack
+      - xquartz
     taps:
       - nikitabobko/tap
       - FelixKratz/formulae
