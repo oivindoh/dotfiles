@@ -1,0 +1,21 @@
+Host *
+  PasswordAuthentication no    
+  #IdentitiesOnly yes
+  #IdentityAgent ~/.bitwarden-ssh-agent.sock
+  #IdentityAgent ~/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock
+
+Host {{ .workjumphost }}
+  ProxyJump none    
+  User oivhoe
+  ControlMaster auto
+  ForwardAgent yes
+  DynamicForward 1313
+  ControlMaster auto
+  ControlPath /tmp/ssh-%h-%p-%r
+  Controlpersist 2
+
+Host {{ range .workdomains }}*.{{ . }} {{ end }}
+  ProxyJump {{ .workjumphost }}
+
+Host gitlab.com
+  IdentityFile ~/.ssh/personal-gitlab-com.pub

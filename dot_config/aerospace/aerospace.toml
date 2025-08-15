@@ -239,8 +239,12 @@ automatically-unhide-macos-hidden-apps = true
     run = ['move-node-to-workspace 3']
 [[on-window-detected]]
     if.app-id = 'com.microsoft.VSCode'
+    # doesn't really work because these are
+    # not detected during startup
     if.during-aerospace-startup = true
     run = ['move-node-to-workspace 2']
+
+# TODO Need a command to launch scripts to perfor organisation above...
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes

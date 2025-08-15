@@ -1,14 +1,43 @@
+# For chezoi plugins
 path+=$HOME/.local/bin
 export PATH
+
+# Dev envs
+eval "$(/opt/homebrew/bin/mise activate zsh)"
 export CLICOLOR=1
+
+# Shell history
+eval "$(atuin init zsh)"
+
+# Little bit less dumb vi
 export EDITOR=nvim
+
+# Bitwarden ssh agent
 #export SSH_AUTH_SOCK=$HOME/.bitwarden-ssh-agent.sock
 export SSH_AUTH_SOCK=$HOME/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock
+
+# Autocomplete scaffold
 autoload -Uz compinit
 compinit
-
-wallpaper () { automator -i "${1}" ~/Documents/SetBackground.workflow }
 source <(kubectl completion zsh)
+
+# Set the damn WP
+wallpaper () { automator -i "${1}" ~/Documents/SetBackground.workflow }
+
+# Simple aliases
 alias k=kubectl
-alias vim=nvim
 alias ls=eza
+alias cf='chezmoi fzf'
+alias df=duf
+alias top=btop
+alias cat=bat
+alias dig=doggo
+
+# Delete all failed sgbackup resources in a cluster
+delete-failed-sgbackups() {
+  local dry_run="--dry-run=client"
+  if [[ "$1" == "--no-dry-run" ]]; then
+    dry_run=""
+  fi
+  kubectl get sgbackups -A -o yaml | yq '.items[] | select(.status.process.status == "Failed") | .metadata.namespace + " " + .metadata.name' | xargs -I {} bash -c "kubectl delete sgbackup -n \$(echo {} | cut -d' ' -f1) \$(echo {} | cut -d' ' -f2) $dry_run"
+}

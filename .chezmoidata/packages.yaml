@@ -4,23 +4,24 @@ packages:
       - git # yes
       - argocd # need the cli
       - jq # pipe it all
-      - gh
+      - gh # for github
       - chezmoi # this
-      - helm # packages
-      - kubecm # config manager
-      - kubectx # context switch
+      - helm # k8s packages, useful for local discoverability
+      - kubecm # k8s config manager
+      - kubectx # k8s context switch
       - kubernetes-cli # duh
       - ncdu # disk usage ui
       - nmap # spy
       - ollama # local models
-      - sqlmap
+      - sqlmap # pentest sql
       - sqlite # local storage
       - suricata # spy
       - fzf # great fuzzy search
       - duf # better disk usage report
-      - tealdeer # man page steroids
+      - tealdeer # man page efficiency drugs
       - bat # super cat
       - eza # better ls
+      - btop # better top
       # mosh ? ssh replace
       # glances ? top replace
       # btop ? top replace
@@ -28,33 +29,40 @@ packages:
       # atuin ? shell history in sqlite with more context
       - yq
       - jq
-      - nvim
-      # dog ? dig replacement
+      - nvim # improved vim
+      # dog ? dig replacement, now gone from brew
+      - doggo # dns client with json output and stuff
       # himalaya - cli email?
       # procs ? ps replacement
-      - sketchybar
+      #- sketchybar # using simple-bar in ubersicht instead
       - borders
       - wireguard-tools
       - k9s
+      - sops # encrypt yaml content vs age, ssh, gpg
+      - age # encryption tool
+      - kustomize
+      - ksops # sops secrets in kustomize
+      - bitwarden-cli # not compatible with appstore ui
+      - mise # deal with dev env in a less dumb way
 
     casks:
       - itermai
-      - brave-browser
+      - brave-browser # least shitty browser
       - gpg-suite
-      - little-snitch
-      - mattermost
-      - iterm2
-      - visual-studio-code
-      - aerospace
-      - font-hack-nerd-font
-      - font-sketchybar-app-font
-      - sf-symbols
-      - ubersicht
-      - slack
-      - xquartz
-      - zoom
+      - little-snitch # stop unwanted/unnecessary external connections
+      - mattermost # chat
+      - iterm2 # decent term
+      - visual-studio-code # too lazy to learn neovim
+      - aerospace # handle the windows
+      - font-hack-nerd-font # extra glyphs
+      - font-sketchybar-app-font # even more extra glyphs
+      - sf-symbols # 
+      - ubersicht # needed for simple-bar
+      - slack # corp chat
+      - xquartz # x forwarding
+      - zoom # meetings
     taps:
       - nikitabobko/tap
       - FelixKratz/formulae
     mas:
-      - bitwarden
+      - bitwarden # 
