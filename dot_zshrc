@@ -1,6 +1,18 @@
 # For chezoi plugins
 path+=$HOME/.local/bin
+fpath+=("$(brew --prefix)/share/zsh/site-functions")
 export PATH
+
+# Prompt
+autoload -U promptinit; promptinit
+prompt pure
+
+# kubectl context/ns
+source ~/.local/share/zsh/kubectl.zsh
+_lineup=$'\e[1A'
+_linedown=$'\e[1B'
+_kutl='%F{red}$ZSH_KUBECTL_PROMPT%f'
+RPROMPT=%{${_lineup}%}${_kutl}%{${_linedown}%}
 
 # Dev envs
 eval "$(/opt/homebrew/bin/mise activate zsh)"
@@ -20,11 +32,14 @@ export SSH_AUTH_SOCK=$HOME/Library/Containers/com.bitwarden.desktop/Data/.bitwar
 autoload -Uz compinit
 compinit
 source <(kubectl completion zsh)
+# use same completions for kubecolor as kubectl
+compdef kubecolor=kubectl
 
 # Set the damn WP
 wallpaper () { automator -i "${1}" ~/Documents/SetBackground.workflow }
 
 # Simple aliases
+alias kubectl=kubecolor
 alias k=kubectl
 alias ls=eza
 alias cf='chezmoi fzf'

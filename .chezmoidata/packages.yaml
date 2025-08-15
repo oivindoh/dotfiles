@@ -44,6 +44,9 @@ packages:
       - bitwarden-cli # not compatible with appstore ui
       - mise # deal with dev env in a less dumb way
       - ripgrep # better grep
+      - pure # simple prompt
+      - wezterm # poss replacement for iterm2
+      - kubecolor # wrapper to colourise kubectl output
 
     casks:
       - itermai
