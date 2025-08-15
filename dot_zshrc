@@ -32,7 +32,7 @@ alias df=duf
 alias top=btop
 alias cat=bat
 alias dig=doggo
-
+alias grep=rg
 # Delete all failed sgbackup resources in a cluster
 delete-failed-sgbackups() {
   local dry_run="--dry-run=client"
@@ -41,3 +41,6 @@ delete-failed-sgbackups() {
   fi
   kubectl get sgbackups -A -o yaml | yq '.items[] | select(.status.process.status == "Failed") | .metadata.namespace + " " + .metadata.name' | xargs -I {} bash -c "kubectl delete sgbackup -n \$(echo {} | cut -d' ' -f1) \$(echo {} | cut -d' ' -f2) $dry_run"
 }
+
+# final sources
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

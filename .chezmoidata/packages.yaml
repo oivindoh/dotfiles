@@ -24,9 +24,8 @@ packages:
       - btop # better top
       # mosh ? ssh replace
       # glances ? top replace
-      # btop ? top replace
-      # dust ? du replace
-      # atuin ? shell history in sqlite with more context
+      -  dust ? du replace
+      - atuin # shell history in sqlite with more context
       - yq
       - jq
       - nvim # improved vim
@@ -44,6 +43,7 @@ packages:
       - ksops # sops secrets in kustomize
       - bitwarden-cli # not compatible with appstore ui
       - mise # deal with dev env in a less dumb way
+      - ripgrep # better grep
 
     casks:
       - itermai
