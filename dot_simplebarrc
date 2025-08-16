@@ -32,7 +32,7 @@
   },
   "themes": {
     "lightTheme": "NightShiftLight",
-    "darkTheme": "GruvboxMaterial",
+    "darkTheme": "Nord",
     "colorMain": "",
     "colorMainAlt": "",
     "colorMinor": "",
@@ -255,7 +255,22 @@
     "showSpecter": true
   },
   "userWidgets": {
-    "userWidgetsList": {}
+    "userWidgetsList": {
+      "1": {
+        "title": "Lock",
+        "icon": "VPNOff",
+        "backgroundColor": "--main-alt",
+        "output": "echo 1 > /dev/null",
+        "onClickAction": "osascript -e 'tell application \"System Events\" to keystroke \"q\" using {command down, control down}'",
+        "onRightClickAction": "",
+        "onMiddleClickAction": "",
+        "refreshFrequency": "100000",
+        "showOnDisplay": "",
+        "active": true,
+        "noIcon": false,
+        "hideWhenNoOutput": false
+      }
+    }
   },
   "customStyles": {
     "styles": "/* your custom css styles here */"
