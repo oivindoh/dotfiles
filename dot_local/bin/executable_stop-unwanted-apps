@@ -1,0 +1,122 @@
+#!/bin/zsh
+setopt nounset
+
+apps=(
+    "/Applications/Microsoft Word.app"
+    "/Applications/Microsoft PowerPoint.app"
+    "/Applications/Microsoft Excel.app"
+    "/Applications/Microsoft OneNote.app"
+    "/Applications/Microsoft Edge.app"
+    "/Applications/Microsoft Teams.app"
+    "/Applications/Microsoft Outlook.app"
+)
+
+# Custom app to bundle id mappings
+typeset -A custom_bundle_ids
+custom_bundle_ids=(
+    ["Microsoft Edge"]="com.microsoft.Edge"
+    # ["Microsoft Word.app"]="com.microsoft.word"
+)
+
+for app in "${apps[@]}"; do
+    # Remove the existing app bundle if it exists
+    if [ -d "$app" ]; then
+        sudo rm -rf "$app"
+        echo "Removed: $app"
+    fi
+    
+    # Create minimal dummy .app structure with proper permissions
+    sudo mkdir -p "$app/Contents/MacOS"
+    sudo mkdir -p "$app/Contents/Resources"
+    sudo chmod -R u+rwX "$app"  # Ensure write permissions for the user
+    
+    # Extract app name without .app
+    app_name=$(basename "$app" .app)
+    
+    # Check if there's a custom bundle identifier for this app
+if [[ -n "${custom_bundle_ids[$app_name]+isset}" && -n "${custom_bundle_ids[$app_name]}" ]]; then
+        bundle_id="${custom_bundle_ids[$app_name]}"
+    else
+        # Split app_name into company prefix and app-specific part
+        # Use parameter expansion to get the first word as company
+        company=${app_name%% *}
+        # Get the rest after the first space (if any)
+        app_part=${app_name#* }
+        # If there's no space, app_part is the same as app_name
+        [[ "$app_part" == "$app_name" ]] && app_part=""
+        
+        # Convert to lowercase and remove spaces
+        company=$(echo "$company" | tr '[:upper:]' '[:lower:]' | tr -d ' ')
+        app_part=$(echo "$app_part" | tr '[:upper:]' '[:lower:]' | tr -d ' ')
+        
+        # Construct bundle ID: com.<company>.<app_part> or com.<company> if no app_part
+        if [[ -n "$app_part" ]]; then
+            bundle_id="com.$company.$app_part"
+        else
+            bundle_id="com.$company"
+        fi
+    fi
+
+    # Create Info.plist with XML content using a temporary file to avoid permission issues
+    tmp_plist=$(mktemp)
+    cat << EOF > "$tmp_plist"
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ACSecret</key>
+	<string>e68d2f16-7be9-436e-b938-e4b90bbc30de</string>
+	<key>BuildMachineOSBuild</key>
+	<string>24C101</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>dummy</string>
+	<key>CFBundleIdentifier</key>
+	<string>$bundle_id</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$app_name</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>99044.2406.3471.4570</string>
+	<key>CFBundleSupportedPlatforms</key>
+	<array>
+		<string>MacOSX</string>
+	</array>
+	<key>CFBundleVersion</key>
+	<string>99044.2406.3471.4570</string>
+	<key>DTCompiler</key>
+	<string>com.apple.compilers.llvm.clang.1_0</string>
+	<key>DTPlatformBuild</key>
+	<string>24B75</string>
+	<key>DTPlatformName</key>
+	<string>macosx</string>
+	<key>DTPlatformVersion</key>
+	<string>15.1</string>
+	<key>DTSDKBuild</key>
+	<string>24B75</string>
+	<key>DTSDKName</key>
+	<string>macosx15.1</string>
+	<key>DTXcode</key>
+	<string>1610</string>
+	<key>DTXcodeBuild</key>
+	<string>16B40</string>
+	<key>NSPrincipalClass</key>
+	<string>NSApplication</string>
+</dict>
+</plist>
+EOF
+    sudo mv "$tmp_plist" "$app/Contents/Info.plist"
+    sudo chmod 644 "$app/Contents/Info.plist"
+
+    sudo touch "$app/Contents/MacOS/dummy"
+    sudo chmod +x "$app/Contents/MacOS/dummy"
+
+    echo "Created stub for: $app"
+done
+
+echo "All stubs created. MDM should now see these as 'present'."
+
